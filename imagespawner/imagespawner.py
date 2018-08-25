@@ -66,18 +66,6 @@ class DockerImageChooserSpawner(DockerSpawner):
             )
         }
         return options
-
-    @gen.coroutine
-    def start(self, image=None, extra_create_kwargs=None,
-            extra_start_kwargs=None, extra_host_config=None):
-        # container_prefix is used to construct container_name
-        self.container_prefix = self.user_options['container_prefix']
-
-        # start the container
-        yield DockerSpawner.start(
-            self, image=self.user_options['container_image'],
-            extra_create_kwargs=extra_create_kwargs,
-            extra_host_config=extra_host_config)
     
 # http://jupyter.readthedocs.io/en/latest/development_guide/coding_style.html
 # vim: set ai et ts=4 sw=4:
